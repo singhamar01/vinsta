@@ -1,0 +1,19 @@
+<template>
+
+    <template if:true={persons}>
+        <div class="slds-grid slds-wrap">
+            <template for:each={persons} for:item="person">
+                <div key={person.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_small">
+                    <lightning-card title={person.Name}>
+                        <div class="slds-p-horizontal_medium slds-m-top_small">
+                            <p><strong>Name:</strong> {person.Name}</p>
+                            <p><strong>Date of Birth:</strong> {person.Date_of_Birth__c}</p>
+                            <p><strong>Gender:</strong> {person.Gender__c}</p>
+                            <p><strong>Marital Status:</strong> {person.Marital_Status__c}</p>
+                        </div>
+                    </lightning-card>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

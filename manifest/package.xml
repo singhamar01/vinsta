@@ -3,6 +3,7 @@
 
     <types>
         <members>vi_ApexModule</members>
+        <members>familyBook</members>
         <members>testMixin</members>
         <name>LightningComponentBundle</name>
     </types>
