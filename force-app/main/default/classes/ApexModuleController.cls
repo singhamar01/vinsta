@@ -22,7 +22,7 @@ public with sharing class ApexModuleController {
     @AuraEnabled(cacheable=true)
     public static List<Person__c> getAllPersons() {
         // Query to fetch all Person__c records
-        return [SELECT Id, Name, Date_of_Birth__c, Gender__c, Marital_Status__c
+        return [SELECT Id, Name, Date_of_Birth__c, Gender__c, Marital_Status__c, Order__c
                 FROM Person__c 
                 ORDER BY Order__c ASC ];
     }
