@@ -13,9 +13,11 @@ export default class TestMixin extends AccountModuleMixin(
     // which can be used in the component.
     // The connectedCallback lifecycle hook is used to log the results
     // of calling these methods when the component is connected to the DOM.
-    connectedCallback() {
+    async connectedCallback() {
         console.log('TestMixin connectedCallback called');
-        console.log(this.getAccounts());
+        const accounts = await this.getRecentAccounts();
+        console.log('Recent Accounts:', JSON.stringify(accounts));
+        //console.log(this.getAccounts());
         console.log(this.getContacts());
     }
 }

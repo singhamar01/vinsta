@@ -6,5 +6,9 @@
         <members>testMixin</members>
         <name>LightningComponentBundle</name>
     </types>
+    <types>
+        <members>ApexModuleController</members>
+        <name>ApexClass</name>
+    </types>
     <version>61.0</version>
 </Package>
