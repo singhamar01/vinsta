@@ -1,12 +1,15 @@
 import { LightningElement } from 'lwc';
 //import { AccountModuleMixin } from 'c/vi_AccountModuleMixin';
 //import { ContactModuleMixin } from 'c/vi_ContactModuleMixin';
-import { AccountModuleMixin,ContactModuleMixin } from 'c/vi_ApexModule';
+import { AccountModuleMixin,ContactModuleMixin,PersonModuleMixin } from 'c/vi_ApexModule';
 
 export default class TestMixin extends AccountModuleMixin(
-    ContactModuleMixin(LightningElement)
+    ContactModuleMixin(PersonModuleMixin(LightningElement))
 ) {
-  
+    //create a variable to hold the accounts
+    accounts = [];
+    //create a variable to hold the persons
+    persons = [];
     // This class uses the mixins to add functionality
     // from vi_ApexModule to the LightningElement base class.
     // The mixins add the `getAccounts()` and `getContacts()` methods
@@ -15,9 +18,11 @@ export default class TestMixin extends AccountModuleMixin(
     // of calling these methods when the component is connected to the DOM.
     async connectedCallback() {
         console.log('TestMixin connectedCallback called');
-        const accounts = await this.getRecentAccounts();
-        console.log('Recent Accounts:', JSON.stringify(accounts));
+        //this.accounts = await this.getRecentAccounts();
+        //console.log('Recent Accounts:', JSON.stringify(this.accounts));
+        this.persons = await this.getAllPersons();
+        console.log('All Persons:', JSON.stringify(this.persons));
         //console.log(this.getAccounts());
-        console.log(this.getContacts());
+        //console.log(this.getContacts());
     }
 }
