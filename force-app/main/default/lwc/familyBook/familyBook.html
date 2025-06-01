@@ -3,7 +3,7 @@
     <template if:true={groupedPersons}>
         <div class="slds-grid slds-wrap">
             <template for:each={groupedPersons} for:item="group">
-                <div key={group.orderLevel} class="slds-grid slds-wrap slds-m-bottom_medium">
+                
                     <template for:each={group.persons} for:item="person">
                         <div key={person.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_small">
                             <lightning-card title={person.Name}>
@@ -17,7 +17,7 @@
                             </lightning-card>
                         </div>
                     </template>
-                </div>
+               
             </template>
         </div>
     </template>
