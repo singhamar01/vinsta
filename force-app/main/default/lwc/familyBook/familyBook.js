@@ -16,8 +16,11 @@ export default class FamilyBook extends PersonModuleMixin(LightningElement) {
     groupPersonsByOrderLevel(persons) {
         const grouped = {};
         persons.forEach(person => {
-            const orderLevel = person.Order_Level__c;
+            console.log(person.Order__c);
+            const orderLevel = person.Order__c ? Number(person.Order__c.charAt(0)) : NaN;
+            console.log(`Processing person: ${person.Name}, Order Level: ${orderLevel}`);
             if (!grouped[orderLevel]) {
+                console.log(`Creating new group for Order Level: ${orderLevel}`);
                 grouped[orderLevel] = { orderLevel, persons: [] };
             }
             grouped[orderLevel].persons.push(person);
