@@ -7,6 +7,11 @@
         <members>testMixin</members>
         <name>LightningComponentBundle</name>
     </types>
+    <!-- AuraDefinitionBundle  -->
+    <types>
+        <members>AuraToLWC</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
     <types>
         <members>ApexModuleController</members>
         <name>ApexClass</name>
