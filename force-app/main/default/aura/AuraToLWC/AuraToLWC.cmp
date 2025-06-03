@@ -1,4 +1,4 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
     <lightning:button label="Call LWC Function" onclick="{!c.callLwcFunction}" />
-    <c:vi_ApexModule aura:id="lwcCmp" />
+    <c:lwcFunction aura:id="lwcCmp" />
 </aura:component>

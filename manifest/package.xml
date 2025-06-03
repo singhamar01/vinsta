@@ -5,6 +5,7 @@
         <members>vi_ApexModule</members>
         <members>familyBook</members>
         <members>testMixin</members>
+        <members>lwcFunction</members>
         <name>LightningComponentBundle</name>
     </types>
     <!-- AuraDefinitionBundle  -->
