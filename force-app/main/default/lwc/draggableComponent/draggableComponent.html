@@ -1,0 +1,10 @@
+<template>
+  <div class="slds-box">
+    <template if:true={isTextInput}>
+      <lightning-input label="Text Input" type="text"></lightning-input>
+    </template>
+    <template if:true={isDropdown}>
+      <lightning-combobox label="Dropdown" options={options}></lightning-combobox>
+    </template>
+  </div>
+</template>

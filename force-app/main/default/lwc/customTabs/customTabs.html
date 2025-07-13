@@ -1,0 +1,48 @@
+<template>
+  <lightning-card title="Custom Tabs with Drag and Drop">
+    <!-- Tab Navigation -->
+    <div class="slds-tabs_default">
+      <ul class="slds-tabs_default__nav" role="tablist">
+        <template for:each={tabs} for:item="tab">
+          <li key={tab.id} class="slds-tabs_default__item" role="presentation" onclick={handleTabClick} data-tab-id={tab.id}>
+            <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" aria-selected={tab.active}>
+              {tab.label}
+              <button class="slds-button slds-button_icon" onclick={handleAddTab}>
+                <lightning-icon icon-name="utility:add" size="small"></lightning-icon>
+              </button>
+            </a>
+          </li>
+        </template>
+      </ul>
+
+      <!-- Tab Content with Drop Zone -->
+      <template for:each={tabs} for:item="tab">
+        <div key={tab.id} class={tab.contentClass} ondragover={handleDragOver} ondrop={handleDrop} data-tab-id={tab.id}>
+          <template if:true={tab.components}>
+            <template for:each={tab.components} for:item="component">
+              <div key={component.id} class="slds-p-around_small">
+                <c-draggable-component component-type={component.type}></c-draggable-component>
+              </div>
+            </template>
+          </template>
+          <div if:false={tab.components} class="slds-text-body_regular">
+            Drag and drop components here
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- Draggable Component Palette -->
+    <div class="slds-m-top_medium">
+      <h3>Available Components</h3>
+      <div class="slds-grid">
+        <div draggable="true" ondragstart={handleDragStart} data-component-type="textInput" class="slds-col slds-p-around_small">
+          <lightning-badge label="Text Input"></lightning-badge>
+        </div>
+        <div draggable="true" ondragstart={handleDragStart} data-component-type="dropdown" class="slds-col slds-p-around_small">
+          <lightning-badge label="Dropdown"></lightning-badge>
+        </div>
+      </div>
+    </div>
+  </lightning-card>
+</template>
