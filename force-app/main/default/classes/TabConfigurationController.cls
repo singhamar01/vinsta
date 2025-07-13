@@ -35,8 +35,10 @@ public with sharing class TabConfigurationController {
     }
 
     @AuraEnabled
-    public static void saveTabConfigurations(List<TabConfigWrapper> tabConfigs) {
+    public static void saveTabConfigurations(String tabConfigsJson) {
         try {
+            // Deserialize JSON string to List<TabConfigWrapper>
+            List<TabConfigWrapper> tabConfigs = (List<TabConfigWrapper>) JSON.deserialize(tabConfigsJson, List<TabConfigWrapper>.class);
             String userId = UserInfo.getUserId();
             List<TabConfiguration__c> tabsToUpsert = new List<TabConfiguration__c>();
             List<TabComponent__c> componentsToUpsert = new List<TabComponent__c>();
@@ -61,12 +63,13 @@ public with sharing class TabConfigurationController {
                 }
                 tabsToUpsert.add(tabRecord);
 
-                for (ComponentWrapper comp : tab.components) {
-                    TabComponent__c compRecord = new TabComponent__c(
-                        ComponentId__c = comp.id,
-                        ComponentType__c = comp.type
-                    );
-                    componentsToUpsert.add(compRecord);
+                if (tab.components != null) {
+                    for (ComponentWrapper comp : tab.components) {
+                        componentsToUpsert.add(new TabComponent__c(
+                            ComponentId__c = comp.id,
+                            ComponentType__c = comp.type
+                        ));
+                    }
                 }
             }
 
@@ -81,23 +84,28 @@ public with sharing class TabConfigurationController {
                 tabIdToRecordId.put(tab.TabId__c, tab.Id);
             }
 
+            List<TabComponent__c> componentsToUpsertWithParent = new List<TabComponent__c>();
             for (TabConfigWrapper tab : tabConfigs) {
-                for (ComponentWrapper comp : tab.components) {
-                    componentsToUpsert.add(new TabComponent__c(
-                        TabConfiguration__c = tabIdToRecordId.get(tab.tabId),
-                        ComponentId__c = comp.id,
-                        ComponentType__c = comp.type
-                    ));
+                if (tab.components != null) {
+                    for (ComponentWrapper comp : tab.components) {
+                        componentsToUpsertWithParent.add(new TabComponent__c(
+                            TabConfiguration__c = tabIdToRecordId.get(tab.tabId),
+                            ComponentId__c = comp.id,
+                            ComponentType__c = comp.type
+                        ));
+                    }
                 }
             }
 
-            if (!componentsToUpsert.isEmpty() && Schema.sObjectType.TabComponent__c.isCreateable() && Schema.sObjectType.TabComponent__c.isUpdateable()) {
-                upsert componentsToUpsert ComponentId__c;
+            if (!componentsToUpsertWithParent.isEmpty() && Schema.sObjectType.TabComponent__c.isCreateable() && Schema.sObjectType.TabComponent__c.isUpdateable()) {
+                upsert componentsToUpsertWithParent ComponentId__c;
             }
         } catch (Exception e) {
+            // Log the full exception for debugging
+            System.debug('Error in saveTabConfigurations: ' + e.getMessage() + '\nStack Trace: ' + e.getStackTraceString());
             throw new AuraHandledException('Error saving tab configurations: ' + e.getMessage());
         }
-    } 
+    }
 
     // Wrapper classes for serialization
     public class TabConfigWrapper {
