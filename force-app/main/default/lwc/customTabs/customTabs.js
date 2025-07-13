@@ -14,6 +14,7 @@ export default class CustomTabs extends LightningElement {
   async loadTabConfigurations() {
     try {
       const configs = await getTabConfigurations();
+      console.log('Loaded tab configurations:', JSON.stringify(configs));
       if (configs && configs.length > 0) {
         this.tabs = configs.map(tab => ({
           id: tab.tabId,
@@ -36,9 +37,21 @@ export default class CustomTabs extends LightningElement {
 
   async saveTabConfigurations() {
     try {
-      await saveTabConfigurations(this.tabs);
+      console.log('Saving tab configurations:', JSON.stringify(this.tabs));
+      const tabConfigs = this.tabs.map(tab => ({
+        tabId: tab.id,
+        label: tab.label,
+        active: tab.active,
+        contentClass: tab.contentClass,
+        components: tab.components
+      }));
+      console.log('Saving tab configurations:', JSON.stringify(tabConfigs));
+      await saveTabConfigurations(tabConfigs);
       this.showToast('Success', 'Tab configurations saved successfully', 'success');
     } catch (error) {
+      console.error('Error saving tab configurations:', error);
+      console.error('Error details:', JSON.stringify(error));
+      console.error('Error body:', error.body);
       this.showToast('Error', error.body?.message || 'Failed to save tab configurations', 'error');
     }
   }
