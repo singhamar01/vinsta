@@ -16,7 +16,7 @@ export default class CustomTabs extends LightningElement {
       const configs = await getTabConfigurations();
       if (configs && configs.length > 0) {
         this.tabs = configs.map(tab => ({
-          id: tab.tabId,
+          tabId: tab.tabId,
           label: tab.label,
           active: tab.active,
           contentClass: tab.contentClass,
@@ -25,8 +25,8 @@ export default class CustomTabs extends LightningElement {
       } else {
         // Default tabs if no configurations exist
         this.tabs = [
-          { id: 'tab1', label: 'Tab 1', active: true, contentClass: 'slds-tabs_default__content slds-show', components: [] },
-          { id: 'tab2', label: 'Tab 2', active: false, contentClass: 'slds-tabs_default__content slds-hide', components: [] }
+          { tabId: 'tab1', label: 'Tab 1', active: true, contentClass: 'slds-tabs_default__content slds-show', components: [] },
+          { tabId: 'tab2', label: 'Tab 2', active: false, contentClass: 'slds-tabs_default__content slds-hide', components: [] }
         ];
       }
     } catch (error) {
@@ -76,10 +76,12 @@ export default class CustomTabs extends LightningElement {
   handleDrop(event) {
     event.preventDefault();
     const tabId = event.currentTarget.dataset.tabId;
+    console.log('Dropping component into tab:', tabId);
     const componentType = this.draggedComponentType;
+    console.log('Component type:', componentType);
     if (componentType) {
       this.tabs = this.tabs.map(tab => {
-        if (tab.id === tabId) {
+        if (tab.tabId === tabId) {
           return {
             ...tab,
             components: [...tab.components, { id: `${componentType}-${Date.now()}`, type: componentType }]

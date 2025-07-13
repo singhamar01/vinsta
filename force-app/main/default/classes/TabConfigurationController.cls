@@ -51,6 +51,7 @@ public with sharing class TabConfigurationController {
 
             // Prepare tab and component records
             for (TabConfigWrapper tab : tabConfigs) {
+                system.debug('Processing tab: ' + tab.tabId+ ', Label: ' + tab.label + ', Active: ' + tab.active + ', ContentClass: ' + tab.contentClass);
                 TabConfiguration__c tabRecord = new TabConfiguration__c(
                     UserId__c = userId,
                     TabId__c = tab.tabId,
