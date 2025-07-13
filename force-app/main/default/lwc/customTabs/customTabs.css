@@ -3,3 +3,11 @@
   padding: 1rem;
   min-height: 200px;
 }
+.slds-tabs_default__nav .slds-tabs_default__item:last-child .slds-button_icon {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.slds-tabs_default__nav .slds-tabs_default__item:last-child {
+  padding: 0.25rem;
+}

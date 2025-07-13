@@ -7,12 +7,19 @@
           <li key={tab.tabId} class={tab.tabClass}  role="presentation" onclick={handleTabClick} data-tab-id={tab.tabId}>
             <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" aria-selected={tab.active}>
               {tab.label}
-              <button class="slds-button slds-button_icon" onclick={handleAddTab}>
+              <!-- <button class="slds-button slds-button_icon" onclick={handleAddTab}>
                 <lightning-icon icon-name="utility:add" size="small"></lightning-icon>
-              </button>
+              </button>-->
             </a>
           </li>
         </template>
+        <!-- Add Tab Button -->
+        <li class="slds-tabs_default__item" role="presentation">
+          <button class="slds-button slds-button_icon" onclick={handleAddTab} title="Add New Tab">
+            <lightning-icon icon-name="utility:add" size="small"></lightning-icon>
+            <span class="slds-assistive-text">Add New Tab</span>
+          </button>
+        </li>        
       </ul>
 
       <!-- Tab Content with Drop Zone -->
