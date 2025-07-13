@@ -12,7 +12,7 @@
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
-        <members>ApexModuleController</members>
+        <members>TabConfigurationController</members>
         <name>ApexClass</name>
     </types>
     <version>61.0</version>
