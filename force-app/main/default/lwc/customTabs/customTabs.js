@@ -62,7 +62,7 @@ export default class CustomTabs extends LightningElement {
     const newTabId = `tab${this.tabs.length + 1}`;
     this.tabs = [
       ...this.tabs,
-      { id: newTabId, label: `Tab ${this.tabs.length + 1}`, active: false, contentClass: 'slds-tabs_default__content slds-hide', components: [] }
+      { tabId: newTabId, label: `Tab ${this.tabs.length + 1}`, active: false, contentClass: 'slds-tabs_default__content slds-hide', components: [] }
     ];
     this.saveTabConfigurations();
   }

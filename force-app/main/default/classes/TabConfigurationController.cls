@@ -5,7 +5,7 @@ public with sharing class TabConfigurationController {
             String userId = UserInfo.getUserId();
             List<TabConfiguration__c> tabConfigs = [
                 SELECT Id, TabId__c, TabLabel__c, IsActive__c, ContentClass__c,
-                       (SELECT Id, ComponentId__c, ComponentType__c FROM TabComponents__r)
+                       (SELECT Id, ComponentId__c, ComponentType__c FROM TabComponents__r ORDER BY CreatedDate ASC)
                 FROM TabConfiguration__c
                 WHERE UserId__c = :userId
                 WITH SECURITY_ENFORCED
