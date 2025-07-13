@@ -6,7 +6,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class CustomTabs extends LightningElement {
   @track tabs = [];
   draggedComponentType;
-
+    
   connectedCallback() {
     this.loadTabConfigurations();
   }
@@ -21,13 +21,14 @@ export default class CustomTabs extends LightningElement {
           label: tab.label,
           active: tab.active,
           contentClass: tab.contentClass,
-          components: tab.components || []
+          components: tab.components || [],
+          tabClass: tab.active ? 'slds-tabs_default__item slds-is-active' : 'slds-tabs_default__item'
         }));
       } else {
         // Default tabs if no configurations exist
         this.tabs = [
-          { tabId: 'tab1', label: 'Tab 1', active: true, contentClass: 'slds-tabs_default__content slds-show', components: [] },
-          { tabId: 'tab2', label: 'Tab 2', active: false, contentClass: 'slds-tabs_default__content slds-hide', components: [] }
+          { tabId: 'tab1', label: 'Tab 1', active: true, contentClass: 'slds-tabs_default__content slds-show', components: [], tabClass: 'slds-tabs_default__item slds-is-active' },
+          { tabId: 'tab2', label: 'Tab 2', active: false, contentClass: 'slds-tabs_default__content slds-hide', components: [], tabClass: 'slds-tabs_default__item' }
         ];
       }
     } catch (error) {
@@ -50,8 +51,9 @@ export default class CustomTabs extends LightningElement {
     const tabId = event.currentTarget.dataset.tabId;
     this.tabs = this.tabs.map(tab => ({
       ...tab,
-      active: tab.id === tabId,
-      contentClass: tab.id === tabId ? 'slds-tabs_default__content slds-show' : 'slds-tabs_default__content slds-hide'
+      active: tab.tabId === tabId,
+      contentClass: tab.tabId === tabId ? 'slds-tabs_default__content slds-show' : 'slds-tabs_default__content slds-hide',
+      tabClass: tab.tabId === tabId ? 'slds-tabs_default__item slds-is-active' : 'slds-tabs_default__item'
     }));
     this.saveTabConfigurations();
   }
