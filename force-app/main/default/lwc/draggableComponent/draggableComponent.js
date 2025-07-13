@@ -11,6 +11,10 @@ export default class DraggableComponent extends LightningElement {
     return this.componentType === 'dropdown';
   }
 
+  get isButton() {
+    return this.componentType === 'button';
+  }
+
   options = [
     { label: 'Option 1', value: 'option1' },
     { label: 'Option 2', value: 'option2' }

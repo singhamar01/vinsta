@@ -6,5 +6,8 @@
     <template if:true={isDropdown}>
       <lightning-combobox label="Dropdown" options={options}></lightning-combobox>
     </template>
+    <template if:true={isButton}>
+      <c-custom-button component-type={componentType}></c-custom-button>
+    </template>    
   </div>
 </template>

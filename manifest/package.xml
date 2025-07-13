@@ -4,6 +4,7 @@
     <types>
         <members>draggableComponent</members>
         <members>customTabs</members>
+        <members>customButton</members>
         <name>LightningComponentBundle</name>
     </types>
     <!-- AuraDefinitionBundle  -->
