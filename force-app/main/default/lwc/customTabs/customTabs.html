@@ -4,7 +4,7 @@
     <div class="slds-tabs_default">
       <ul class="slds-tabs_default__nav" role="tablist">
         <template for:each={tabs} for:item="tab">
-          <li key={tab.id} class="slds-tabs_default__item" role="presentation" onclick={handleTabClick} data-tab-id={tab.id}>
+          <li key={tab.tabId} class="slds-tabs_default__item" role="presentation" onclick={handleTabClick} data-tab-id={tab.tabId}>
             <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" aria-selected={tab.active}>
               {tab.label}
               <button class="slds-button slds-button_icon" onclick={handleAddTab}>
@@ -17,7 +17,7 @@
 
       <!-- Tab Content with Drop Zone -->
       <template for:each={tabs} for:item="tab">
-        <div key={tab.id} class={tab.contentClass} ondragover={handleDragOver} ondrop={handleDrop} data-tab-id={tab.tabId}>
+        <div key={tab.tabId} class={tab.contentClass} ondragover={handleDragOver} ondrop={handleDrop} data-tab-id={tab.tabId}>
           <template if:true={tab.components}>
             <template for:each={tab.components} for:item="component">
               <div key={component.id} class="slds-p-around_small">

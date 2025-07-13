@@ -14,6 +14,7 @@ export default class CustomTabs extends LightningElement {
   async loadTabConfigurations() {
     try {
       const configs = await getTabConfigurations();
+      console.log('Loaded tab configurations:', JSON.stringify(configs));
       if (configs && configs.length > 0) {
         this.tabs = configs.map(tab => ({
           tabId: tab.tabId,
