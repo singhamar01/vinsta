@@ -1,4 +1,4 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 import getTabConfigurations from '@salesforce/apex/TabConfigurationController.getTabConfigurations';
 import saveTabConfigurations from '@salesforce/apex/TabConfigurationController.saveTabConfigurations';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
@@ -6,6 +6,8 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class CustomTabs extends LightningElement {
   @track tabs = [];
   draggedComponentType;
+  @api recordId; // Receive recordId from FlexiPage
+  @api objectApiName; // Receive objectApiName from FlexiPage  
     
   connectedCallback() {
     this.loadTabConfigurations();
@@ -87,7 +89,14 @@ export default class CustomTabs extends LightningElement {
         if (tab.tabId === tabId) {
           return {
             ...tab,
-            components: [...tab.components, { id: `${componentType}-${Date.now()}`, type: componentType }]
+            components: [
+              ...tab.components, 
+              {
+                id: `${componentType}-${Date.now()}`,
+                type: componentType,
+                isDisabled: componentType === 'checkbox' ? false : undefined // Default to Enabled for checkbox
+              }
+            ]
           };
         }
         return tab;
@@ -95,6 +104,19 @@ export default class CustomTabs extends LightningElement {
       this.saveTabConfigurations();
     }
   }
+
+  // Toggle checkbox mode (for testing; can be exposed via UI later)
+  toggleCheckboxMode(event) {
+    const componentId = event.currentTarget.dataset.componentId;
+    this.tabs = this.tabs.map(tab => ({
+      ...tab,
+      components: tab.components.map(comp => ({
+        ...comp,
+        isDisabled: comp.id === componentId ? !comp.isDisabled : comp.isDisabled
+      }))
+    }));
+    this.saveTabConfigurations();
+  }  
 
   showToast(title, message, variant) {
     const event = new ShowToastEvent({

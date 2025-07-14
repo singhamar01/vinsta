@@ -28,13 +28,26 @@
           <template if:true={tab.components}>
             <template for:each={tab.components} for:item="component">
               <div key={component.id} class="slds-p-around_small">
-                <c-draggable-component component-type={component.type}></c-draggable-component>
+                <c-draggable-component
+                      component-type={component.type}
+                      record-id={recordId}
+                      object-api-name={objectApiName}
+                      is-disabled={component.isDisabled}
+                    >
+                  </c-draggable-component>
+                  <template if:true={component.isCheckbox}>
+                    <button onclick={toggleCheckboxMode} data-component-id={component.id}>
+                      Toggle Mode
+                    </button>
+                  </template>
               </div>
             </template>
           </template>
-          <div if:false={tab.components} class="slds-text-body_regular">
-            Drag and drop components here
-          </div>
+          <template if:false={tab.components}>
+            <div class="slds-text-body_regular">
+              Drag and drop components here
+            </div>
+          </template>
         </div>
       </template>
     </div>
@@ -51,6 +64,12 @@
         </div>
         <div draggable="true" ondragstart={handleDragStart} data-component-type="button" class="slds-col slds-p-around_small">
           <lightning-badge label="Button"></lightning-badge>
+        </div>
+        <div draggable="true" ondragstart={handleDragStart} data-component-type="caseDetails" class="slds-col slds-p-around_small">
+          <lightning-badge label="Case Details"></lightning-badge>
+        </div>
+        <div draggable="true" ondragstart={handleDragStart} data-component-type="checkbox" class="slds-col slds-p-around_small">
+          <lightning-badge label="Checkbox"></lightning-badge>
         </div>        
       </div>
     </div>

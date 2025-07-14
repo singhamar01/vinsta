@@ -1,0 +1,42 @@
+/* Disabled Mode: Unchecked (Black background) */
+.custom-checkbox-black .slds-checkbox_faux {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* Disabled Mode: Checked (Grey background) */
+.custom-checkbox-grey .slds-checkbox_faux {
+  background-color: #808080 !important;
+  border-color: #808080 !important;
+}
+
+/* Enabled Mode: Checked (Green background) */
+.custom-checkbox-green .slds-checkbox_faux {
+  background-color: #00ff00 !important;
+  border-color: #00ff00 !important;
+}
+
+/* Ensure label text remains readable */
+.custom-checkbox-black .slds-form-element__label,
+.custom-checkbox-grey .slds-form-element__label {
+  color: #ffffff;
+  padding-left: 0.25rem;
+}
+
+.custom-checkbox-green .slds-form-element__label {
+  color: #000000;
+  padding-left: 0.25rem;
+}
+
+/* Wrapper styling */
+.custom-checkbox-black,
+.custom-checkbox-grey,
+.custom-checkbox-green {
+  padding: 0.25rem;
+  display: inline-block;
+}
+
+:host {
+  display: block;
+  padding: 0.25rem;
+}

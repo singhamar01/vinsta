@@ -8,6 +8,12 @@
     </template>
     <template if:true={isButton}>
       <c-custom-button component-type={componentType}></c-custom-button>
-    </template>    
+    </template>
+    <template if:true={isCaseDetails}>
+      <c-case-details component-type={componentType} record-id={recordId} object-api-name={objectApiName}></c-case-details>
+    </template>
+    <template if:true={isCheckbox}>
+      <c-custom-checkbox component-type={componentType} record-id={recordId} object-api-name={objectApiName} is-disabled={isDisabled}></c-custom-checkbox>
+    </template>
   </div>
 </template>
