@@ -15,6 +15,7 @@ export default class MyCheckbox extends LightningElement {
     const checkboxInput = this.template.querySelector('lightning-input[type="checkbox"]');
     if (checkboxInput) {
       const fauxElement = checkboxInput.shadowRoot.querySelector('.slds-checkbox_faux');
+      console.log('Faux Element:', fauxElement);
       if (fauxElement) {
         fauxElement.classList.add('my-custom-checkbox');
       }

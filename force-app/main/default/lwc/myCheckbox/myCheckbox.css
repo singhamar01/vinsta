@@ -1,0 +1,6 @@
+/* myCheckbox.css */
+.my-custom-checkbox {
+  border: 2px solid blue !important; /* Example: Make the checkbox border blue */
+  border-radius: 5px; /* Example: Add some border radius */
+  background-color: lightblue !important; /* Example: Change the background color */
+}
