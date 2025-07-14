@@ -1,14 +1,11 @@
 <template>
-  <div class={wrapperClass}>
-    <label class="slds-checkbox">
-      <input
-        type="checkbox"
-        checked={isChecked}
-        disabled={isDisabled}
-        onchange={handleCheckboxChange}
-      />
-      <span class="slds-checkbox_faux"></span>
-      <span class="slds-form-element__label">Custom Checkbox</span>
-    </label>
+  <div class={wrapperClass} style={wrapperStyle}>
+    <lightning-input
+      type="checkbox"
+      label="Custom Checkbox"
+      checked={isChecked}
+      disabled={isDisabled}
+      onchange={handleCheckboxChange}
+    ></lightning-input>
   </div>
 </template>
