@@ -1,13 +1,13 @@
 :host {
     --checkbox-background: #f0f099; /* Default background color */
 }
-
+/*
 .checkbox-container {
-    /* Apply the custom property to the lightning-input checkbox */
+    /* Apply the custom property to the lightning-input checkbox [*Closing]
     --slds-c-checkbox-color-background: var(--checkbox-background);
-    --slds-c-checkbox-mark-color-foreground: #000000; /* Black checkmark for contrast */
-    --slds-c-checkbox-color-border: #1a73e8; /* Blue border for visibility */
-}
+    --slds-c-checkbox-mark-color-foreground: #000000; /* Black checkmark for contrast  [*Closing]
+    --slds-c-checkbox-color-border: #1a73e8; /* Blue border for visibility  [*Closing]
+}*/
 
 .checkbox-container lightning-input {
     /* Apply the custom property to the lightning-input checkbox */
