@@ -17,6 +17,15 @@
     --slds-c-checkbox-color-border: #1a73e8; /* Blue border for visibility */
 }
 
+.my-custom-style {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.extra-padding {
+    padding: 20px;
+}
+
 /* Optional: Additional styling for the container */
 .checkbox-container {
     padding: 10px;
