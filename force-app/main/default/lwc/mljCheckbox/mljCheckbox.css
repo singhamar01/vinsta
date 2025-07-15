@@ -1,0 +1,18 @@
+:host {
+    --checkbox-background: #f0f0f0; /* Fallback default background color */
+}
+
+.checkbox-container lightning-input {
+    /* Apply custom properties to the lightning-input checkbox */
+    --slds-c-checkbox-color-background: var(--checkbox-background);
+    --slds-c-checkbox-color-background-checked: var(--checkbox-background);
+    --slds-c-checkbox-mark-color-foreground: #ffffff; /* White checkmark for contrast */
+    --slds-c-checkbox-color-border: #1a73e8; /* Blue border for visibility */
+}
+
+/* Optional: Additional styling for the container */
+.checkbox-container {
+    padding: 10px;
+    border-radius: 4px;
+    display: inline-block;
+}

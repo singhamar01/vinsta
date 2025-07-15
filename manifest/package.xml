@@ -8,6 +8,7 @@
         <members>caseDetails</members>
         <members>customCheckbox</members>
         <members>myCheckbox</members>
+        <members>mljCheckbox</members>
         <name>LightningComponentBundle</name>
     </types>
     <!-- AuraDefinitionBundle  -->
