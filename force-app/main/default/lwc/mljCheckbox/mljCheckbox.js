@@ -10,8 +10,10 @@ export default class MljCheckbox extends LightningElement {
     @api disabled = false; // Disabled state
 
     connectedCallback() {
-        // Initialize background color based on initial checked state
-        this.updateBackground(this.isChecked);
+        // Defer background update to ensure DOM is ready
+        requestAnimationFrame(() => {
+            this.updateBackground(this.isChecked);
+        });
     }
 
     handleCheckboxChange(event) {
@@ -31,6 +33,10 @@ export default class MljCheckbox extends LightningElement {
 
     updateBackground(isChecked) {
         const checkbox = this.template.querySelector('lightning-input');
-        checkbox.style.setProperty('--checkbox-background', isChecked ? this.checkedBackground : this.defaultBackground);
+        if (checkbox) {
+            checkbox.style.setProperty('--checkbox-background', isChecked ? this.checkedBackground : this.defaultBackground);
+        } else {
+            console.warn('lightning-input element not found in updateBackground');
+        }
     }
 }
