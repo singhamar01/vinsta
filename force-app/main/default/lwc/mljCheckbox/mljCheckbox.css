@@ -1,18 +1,41 @@
 :host {
-    --checkbox-background: #f0f0f0; /* Fallback default background color */
+    --checkbox-background: #f0f0f0;
 }
 
 .checkbox-container lightning-input {
-    /* Apply custom properties to the lightning-input checkbox */
     --slds-c-checkbox-color-background: var(--checkbox-background);
     --slds-c-checkbox-color-background-checked: var(--checkbox-background);
-    --slds-c-checkbox-mark-color-foreground: #ffffff; /* White checkmark for contrast */
-    --slds-c-checkbox-color-border: #1a73e8; /* Blue border for visibility */
+    --slds-c-checkbox-mark-color-foreground: #ffffff;
+    --slds-c-checkbox-color-border: #1a73e8;
 }
 
-/* Optional: Additional styling for the container */
-.checkbox-container {
+/* Styling for label above */
+.checkbox-container.label-above {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 10px;
     border-radius: 4px;
-    display: inline-block;
+    gap: 8px;
+}
+
+/* Styling for label beside */
+.checkbox-container.label-beside {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.checkbox-container.label-beside lightning-input {
+    display: contents; /* Allow internal elements to be styled directly */
+}
+
+.checkbox-container.label-beside lightning-input .slds-form-element__control {
+    margin-right: 4px; /* Reduced space between checkbox and label */
+}
+
+.checkbox-container.label-above lightning-input .slds-form-element__label {
+    margin-bottom: 8px; /* Consistent spacing for above layout */
 }

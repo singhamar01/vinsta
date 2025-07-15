@@ -15,7 +15,7 @@ export default class MljCheckbox extends LightningElement {
 
     connectedCallback() {
         // Set label variant based on labelPosition
-        this.labelVariant = this.labelPosition === 'above' ? 'label-stacked' : 'label-inline';
+        this.labelVariant = this.labelPosition === 'above' ? 'label-stacked' : 'standard';
         // Defer background update to ensure DOM is ready
         requestAnimationFrame(() => {
             this.updateBackground(this.isChecked);
