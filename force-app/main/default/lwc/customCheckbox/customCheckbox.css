@@ -9,6 +9,14 @@
     --slds-c-checkbox-color-border: #1a73e8; /* Blue border for visibility */
 }
 
+.checkbox-container lightning-input {
+    /* Apply the custom property to the lightning-input checkbox */
+    --slds-c-checkbox-color-background: var(--checkbox-background);
+    --slds-c-checkbox-color-background-checked: var(--checkbox-background); /* Explicitly target checked state */
+    --slds-c-checkbox-mark-color-foreground: #000000; /* Black checkmark for contrast */
+    --slds-c-checkbox-color-border: #1a73e8; /* Blue border for visibility */
+}
+
 /* Optional: Additional styling for the container */
 .checkbox-container {
     padding: 10px;
