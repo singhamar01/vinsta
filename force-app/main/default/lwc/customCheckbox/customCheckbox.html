@@ -2,4 +2,14 @@
     <div class="checkbox-container">
         <lightning-input type="checkbox" label="Custom Checkbox" onchange={handleCheckboxChange}></lightning-input>
     </div>
+    <c-custom-checkbox
+        label="Subscribe to Newsletter"
+        is-checked={isSubscribed}
+        default-background="#e0e0e0"
+        checked-background="#007bff"
+        name="newsletter"
+        value="subscribe"
+        disabled={isDisabled}
+        onchange={handleCustomCheckboxChange}
+    ></c-custom-checkbox>    
 </template>

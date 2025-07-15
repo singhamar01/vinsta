@@ -8,6 +8,12 @@ export default class CustomCheckbox extends LightningElement {
         // Dynamically update CSS custom property based on checkbox state
         checkbox.style.setProperty('--checkbox-background', isChecked ? '#28a745' : '#f0f099');
     }
+
+    handleCustomCheckboxChange(event) {
+        console.log('Checked:', event.detail.checked);
+        console.log('Value:', event.detail.value);
+        console.log('Name:', event.detail.name);
+    }    
     /* 
     handleCheckboxChange(event) {
         const isChecked = event.target.checked;
