@@ -1,5 +1,5 @@
 <template>
-    <div class="checkbox-container">
+    <div class={computedContainerClass}>
         <lightning-input
             type="checkbox"
             label={label}
@@ -8,6 +8,7 @@
             name={name}
             value={value}
             disabled={disabled}
+            variant={labelVariant}
         ></lightning-input>
     </div>
 </template>

@@ -1,4 +1,4 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 
 export default class MljCheckbox extends LightningElement {
     @api label = 'Custom Checkbox'; // Default label
@@ -8,8 +8,14 @@ export default class MljCheckbox extends LightningElement {
     @api name; // Name attribute for form association
     @api value; // Value attribute for form submission
     @api disabled = false; // Disabled state
+    @api labelPosition = 'beside'; // Label position: 'above' or 'beside'
+    @api customClass = ''; // Additional custom classes for the container
+
+    @track labelVariant = 'label-stacked'; // Default for 'above' position
 
     connectedCallback() {
+        // Set label variant based on labelPosition
+        this.labelVariant = this.labelPosition === 'above' ? 'label-stacked' : 'label-inline';
         // Defer background update to ensure DOM is ready
         requestAnimationFrame(() => {
             this.updateBackground(this.isChecked);
@@ -38,5 +44,12 @@ export default class MljCheckbox extends LightningElement {
         } else {
             console.warn('lightning-input element not found in updateBackground');
         }
+    }
+
+    get computedContainerClass() {
+        // Combine base class, label position class, and custom class
+        const baseClass = 'checkbox-container';
+        const positionClass = this.labelPosition === 'above' ? 'label-above' : 'label-beside';
+        return `${baseClass} ${positionClass} ${this.customClass}`.trim();
     }
 }

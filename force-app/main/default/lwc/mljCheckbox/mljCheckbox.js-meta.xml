@@ -16,6 +16,8 @@
             <property name="name" type="String" description="Name attribute for form association" />
             <property name="value" type="String" description="Value attribute for form submission" />
             <property name="disabled" type="Boolean" default="false" description="Disables the checkbox" />
+            <property name="labelPosition" type="String" default="beside" description="Position of the label: 'above' or 'beside'" />
+            <property name="customClass" type="String" default="" description="Additional CSS classes for the container div" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
