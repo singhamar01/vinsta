@@ -17,7 +17,7 @@
     --slds-c-checkbox-color-border: #1a73e8; /* Blue border for visibility */
 }
 
-.my-custom-style {
+.checkbox-container.lightning-input .my-custom-style {
     border: 1px solid #ccc;
     background-color: #f9f9f9;
 }
