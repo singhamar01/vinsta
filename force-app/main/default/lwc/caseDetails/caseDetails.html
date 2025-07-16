@@ -12,4 +12,11 @@
             </div>
         </div>
     </lightning-record-view-form>
+
+    <!-- Using standard lightning-input -->
+    <lightning-input type="checkbox" label="Standard Input" onchange={handleInput}></lightning-input>
+
+    <!-- Using custom checkbox -->
+    <c-test-checkbox label="Custom Input" onchange={handleInput}></c-test-checkbox>
+
 </template>
