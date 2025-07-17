@@ -10,6 +10,8 @@
         <members>testCheckbox</members>
         <members>myCheckbox</members>
         <members>mljCheckbox</members>
+        <members>styleHooks</members>
+        <members>parentComponent</members>
         <name>LightningComponentBundle</name>
     </types>
     <!-- AuraDefinitionBundle  -->

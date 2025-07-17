@@ -1,0 +1,44 @@
+:host {
+    --default-background: #f0f0f0; /* Styling hook for unchecked state */
+    --checked-background: #28a745; /* Styling hook for checked state */
+}
+
+.style-hooks-container lightning-input {
+    --slds-c-checkbox-color-background: var(--default-background);
+    --slds-c-checkbox-color-background-checked: var(--checked-background);
+}
+
+/* Styling for label above */
+.style-hooks-container.label-above {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    border-radius: 4px;
+    gap: 8px;
+}
+
+/* Styling for label beside */
+.style-hooks-container.label-beside {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.style-hooks-container lightning-input[data-checked="true"] {
+    --slds-c-checkbox-color-background: var(--checked-background);
+}
+
+.style-hooks-container lightning-input[data-checked="false"] {
+    --slds-c-checkbox-color-background: var(--default-background);
+}
+
+.style-hooks-container.label-beside lightning-input .slds-form-element__control {
+    margin-right: 4px;
+}
+
+.style-hooks-container.label-above lightning-input .slds-form-element__label {
+    margin-bottom: 8px;
+}

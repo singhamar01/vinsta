@@ -1,0 +1,15 @@
+<template>
+    <div class={computedContainerClass}>
+        <lightning-input
+            type="checkbox"
+            label={label}
+            checked={isChecked}
+            onchange={handleCheckboxChange}
+            name={name}
+            value={value}
+            disabled={disabled}
+            variant={labelVariant}
+            data-checked={isChecked}
+        ></lightning-input>
+    </div>
+</template>
