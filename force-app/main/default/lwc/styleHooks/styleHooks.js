@@ -26,16 +26,8 @@ export default class StyleHooks extends LightningElement {
         this.isChecked = event.target.checked;
         // Dispatch event to parent if changeHandler is provided, using the native event
         if (this.changeHandler) {
-            this.changeHandler(event);
+            this.changeHandler(event); // Pass the original lightning-input event
         }
-        // Dispatch a custom event for internal use or additional listeners
-        this.dispatchEvent(new CustomEvent('change', {
-            detail: {
-                checked: this.isChecked,
-                value: this.value,
-                name: this.name
-            }
-        }));
     }
 
     updateStyleHooks() {
