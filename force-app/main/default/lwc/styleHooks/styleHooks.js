@@ -23,6 +23,8 @@ export default class StyleHooks extends LightningElement {
     }
 
     handleCheckboxChange(event) {
+        // Prevent default event bubbling to avoid duplicate handling
+        event.stopPropagation();
         this.isChecked = event.target.checked;
         // Dispatch a custom event with the checked state
         this.dispatchEvent(new CustomEvent('change', {
@@ -30,9 +32,7 @@ export default class StyleHooks extends LightningElement {
                 checked: this.isChecked,
                 value: this.value,
                 name: this.name
-            },
-            bubbles: true,
-            composed: true
+            }
         }));
         // Optionally call the parent handler if provided, passing the custom detail
         if (this.changeHandler) {
