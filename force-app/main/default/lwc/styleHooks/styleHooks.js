@@ -17,7 +17,9 @@ export default class StyleHooks extends LightningElement {
     @api changeHandler;
 
     connectedCallback() {
-        this.labelVariant = this.labelPosition === 'above' ? 'label-stacked' : 'Standard';
+        this.labelVariant = this.labelPosition === 'above' ? 'label-stacked' : 'label-inline';
+        // Apply the @api background properties to CSS custom properties on the host element
+        this.updateStyleHooks();
     }
 
     handleCheckboxChange(event) {
@@ -34,6 +36,16 @@ export default class StyleHooks extends LightningElement {
                 name: this.name
             }
         }));
+    }
+
+    updateStyleHooks() {
+        // Ensure the host element is available before setting properties
+        if (this.template && this.template.host) {
+            this.template.host.style.setProperty('--default-background', this.defaultBackground);
+            this.template.host.style.setProperty('--checked-background', this.checkedBackground);
+        } else {
+            console.warn('Host element not available in updateStyleHooks');
+        }
     }
 
     get computedContainerClass() {
