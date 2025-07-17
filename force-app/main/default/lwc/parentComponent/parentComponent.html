@@ -2,10 +2,13 @@
     <lightning-card  title="PlayGround">
         <c-style-hooks
             label="Style Hooks Checkbox"
+            name="styleHooksCheckbox"
+            value="styleHooksTest"
             label-position="above"
             onchange={handleInput}
             default-background="#f9e905ff"
             checked-background="#28a745"
+            change-handler={handleCheckboxChange}
         ></c-style-hooks>
     </lightning-card>
 </template>

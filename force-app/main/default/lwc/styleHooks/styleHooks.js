@@ -13,20 +13,36 @@ export default class StyleHooks extends LightningElement {
 
     @track labelVariant = 'label-stacked';
 
-    // Handler for parent onchange
+    // Handler for parent onchange (optional, for direct method call)
     @api changeHandler;
 
     connectedCallback() {
-        this.labelVariant = this.labelPosition === 'above' ? 'label-stacked' : 'label-inline';
+        this.labelVariant = this.labelPosition === 'above' ? 'label-stacked' : 'standard';
         // Apply the @api background properties to CSS custom properties on the host element
         this.updateStyleHooks();
     }
 
     handleCheckboxChange(event) {
         this.isChecked = event.target.checked;
-        // Dispatch event to parent if changeHandler is provided, using the native event
+        // Dispatch a custom event with the checked state
+        this.dispatchEvent(new CustomEvent('change', {
+            detail: {
+                checked: this.isChecked,
+                value: this.value,
+                name: this.name
+            },
+            bubbles: true,
+            composed: true
+        }));
+        // Optionally call the parent handler if provided, passing the custom detail
         if (this.changeHandler) {
-            this.changeHandler(event); // Pass the original lightning-input event
+            this.changeHandler({
+                detail: {
+                    checked: this.isChecked,
+                    value: this.value,
+                    name: this.name
+                }
+            });
         }
     }
 
