@@ -12,6 +12,7 @@
         <members>mljCheckbox</members>
         <members>styleHooks</members>
         <members>parentComponent</members>
+        <members>jsInCss</members>
         <name>LightningComponentBundle</name>
     </types>
     <!-- AuraDefinitionBundle  -->

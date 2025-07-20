@@ -1,0 +1,21 @@
+lightning-card{
+    --my-color: black;
+}
+
+div{
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.myClass {
+    color: var(--my-color);
+}
+
+.myOtherClass {
+    border: 1px solid;
+    border-color: var(--my-color);
+}
+
+.myBadge{
+    --sds-c-badge-color-background: var(--my-color);
+}
