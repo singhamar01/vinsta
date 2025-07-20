@@ -1,6 +1,7 @@
 import { LightningElement } from 'lwc';
 
 export default class ParentComponent extends LightningElement {
+    customColor = '#ff5733'; // Example color, can be dynamically set
     handleInput(event) {
         console.log('Checked:', event.detail.checked);
         console.log('Value:', event.detail.value);

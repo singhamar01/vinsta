@@ -9,7 +9,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__AppPage, lightning__RecordPage, lightning__HomePage">
-            <property name="customColor" type="Boolean" />
+            <property name="customColor" type="String" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
