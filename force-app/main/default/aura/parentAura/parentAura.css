@@ -2,4 +2,5 @@
 .THIS {
     --slds-c-button-brand-color-background: #FF7B00; /* A vibrant orange */
     --slds-c-button-brand-color-border: #FF7B00;
+    --my-color: blue; /* Custom color variable */
 }

@@ -1,7 +1,8 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" >
-    <div class="slds-p-around_medium">
+    <div class="slds-card slds-m-top_medium slds-p-around_medium">
         <h1>Hello from the Parent Aura Component!</h1>
-
         <c:childLwc />
+        <c:jsInCss customColor="#FF7B00"></c:jsInCss>
+        <c:jsInCss customColor="#00FF00"></c:jsInCss>
     </div>
 </aura:component>

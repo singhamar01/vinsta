@@ -1,7 +1,7 @@
 import { LightningElement, api } from "lwc";
 
 export default class JsInCss extends LightningElement {
-    @api customColor;
+    @api customColor ;
 
     renderedCallback() {
 
