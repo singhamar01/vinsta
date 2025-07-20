@@ -1,0 +1,5 @@
+/* Using .THIS applies these styles to the Aura component's root element */
+.THIS {
+    --slds-c-button-brand-color-background: #FF7B00; /* A vibrant orange */
+    --slds-c-button-brand-color-border: #FF7B00;
+}

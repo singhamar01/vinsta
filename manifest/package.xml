@@ -12,12 +12,14 @@
         <members>mljCheckbox</members>
         <members>styleHooks</members>
         <members>parentComponent</members>
+        <members>childLwc</members>
         <members>jsInCss</members>
         <name>LightningComponentBundle</name>
     </types>
     <!-- AuraDefinitionBundle  -->
     <types>
         <members>AuraToLWC</members>
+        <members>parentAura</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

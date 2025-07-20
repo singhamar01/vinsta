@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <div class="slds-p-around_medium">
+        <h1>Hello from the Parent Aura Component!</h1>
+
+        <c:childLwc />
+    </div>
+</aura:component>
