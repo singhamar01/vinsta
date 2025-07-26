@@ -20,6 +20,7 @@
     <types>
         <members>AuraToLWC</members>
         <members>parentAura</members>
+        <members>claimOutpatientJudgement</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
