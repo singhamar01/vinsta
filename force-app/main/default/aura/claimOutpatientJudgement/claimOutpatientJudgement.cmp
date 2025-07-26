@@ -1,0 +1,27 @@
+<aura:component controller="ClaimJudgementController">
+    <!-- Attributes to store records and UI state -->
+    <aura:attribute name="caseTransaction" type="Case_Transaction__c"/>
+    <aura:attribute name="casePolicySelections" type="List" default="[]"/>
+    <aura:attribute name="isCheckboxEnabled" type="Boolean" default="false"/>
+    <aura:attribute name="buttonColor" type="String" default="red"/>
+
+    <!-- UI Elements -->
+    <lightning:card title="Claim Judgement">
+        <div class="slds-p-around_medium">
+            <!-- Checkbox -->
+            <lightning:input type="checkbox" 
+                            label="Eligible for Claim" 
+                            name="claimEligible" 
+                            checked="{!v.isCheckboxEnabled}" 
+                            disabled="{!not(v.isCheckboxEnabled)}"/>
+
+            <!-- Action Button -->
+            <lightning:button label="Process Claim" 
+                             variant="{!v.buttonColor == 'green' ? 'success' : v.buttonColor == 'yellow' ? 'neutral' : 'destructive'}"
+                             onclick="{!c.handleProcessClaim}"/>
+        </div>
+    </lightning:card>
+
+    <!-- Initialize component -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+</aura:component>
