@@ -37,11 +37,14 @@
             // Criterion 1: Check if CallerType__c on Case is 'Customer'
             () => caseTransaction && caseTransaction.CallerType__c === 'Customer',
             
-            // Criterion 2-17: Placeholder criteria (replace with actual logic)
+            // Criterion 2: Check if ALL Case_Policy_Selection__c records have Is_Outpatient__c as true
+            () => casePolicySelections && casePolicySelections.length > 0 && casePolicySelections.every(policy => policy.Is_Outpatient__c === true),
+            
+            // Criterion 3-17: Placeholder criteria (replace with actual logic)
             () => caseTransaction && caseTransaction.Amount__c > 0,
             () => casePolicySelections.length > 0,
             () => casePolicySelections.every(policy => policy.Is_Valid__c),
-            // ... Add remaining 14 criteria as functions
+            // ... Add remaining 13 criteria as functions
             // Example: () => caseTransaction.Some_Field__c != null,
         ];
 
