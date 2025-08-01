@@ -27,5 +27,9 @@
         <members>TabConfigurationController</members>
         <name>ApexClass</name>
     </types>
+    <types>
+        <members>SharedUtils</members>
+        <name>StaticResource</name>
+    </types>
     <version>61.0</version>
 </Package>
