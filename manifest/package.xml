@@ -14,12 +14,14 @@
         <members>parentComponent</members>
         <members>childLwc</members>
         <members>jsInCss</members>
+        <members>myLwcComponent</members>
         <name>LightningComponentBundle</name>
     </types>
     <!-- AuraDefinitionBundle  -->
     <types>
         <members>AuraToLWC</members>
         <members>parentAura</members>
+        <members>myAuraComponent</members>
         <members>claimOutpatientJudgement</members>
         <name>AuraDefinitionBundle</name>
     </types>
