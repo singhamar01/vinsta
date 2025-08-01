@@ -75,6 +75,7 @@
             }
             const criteriaResults = runCriteriaChecks(caseTransaction, casePolicySelections);
             const fulfilledCount = criteriaResults.filter(result => result).length;
+            console.log('ClaimUtils.evaluateClaimCriteria: Fulfilled criteria count:', fulfilledCount);
             const uiState = determineUIState(fulfilledCount);
 
             component.set("v.isCheckboxEnabled", uiState.isCheckboxEnabled);

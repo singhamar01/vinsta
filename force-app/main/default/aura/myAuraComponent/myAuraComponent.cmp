@@ -1,6 +1,8 @@
 <!-- testURL: /lightning/cmp/c__myAuraComponent -->
 <!-- myAuraComponent.cmp -->
 <aura:component implements="lightning:isUrlAddressable" access="global">
-    <ltng:require scripts="{!$Resource.SharedUtils}" afterScriptsLoaded="{!c.handleScriptsLoaded}"/>
+    <aura:attribute name="caseTransaction" type="Object" default="{ 'CallerType__c': 'Customer', 'Amount__c': 100 }"/>
+    <aura:attribute name="casePolicySelections" type="Object[]" default="[{ 'Is_Outpatient__c': true, 'Is_Valid__c': true }]"/>
+    <ltng:require scripts="{!join(',', $Resource.SharedUtils, $Resource.ClaimUtils)}" afterScriptsLoaded="{!c.handleScriptsLoaded}"/>
     <div>Check console for SharedUtils output</div>
 </aura:component>
