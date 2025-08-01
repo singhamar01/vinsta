@@ -8,28 +8,8 @@
         global.ClaimUtils = factory();
     }
 }(this, function () {
-    // Private namespace to avoid global pollution
-    const ClaimUtils = {};
-
-    // Evaluate all 17 criteria
-    ClaimUtils.evaluateClaimCriteria = function(component, caseTransaction, casePolicySelections) {
-        try {
-            if (!component || !caseTransaction || !casePolicySelections) {
-                throw new Error('Invalid input parameters');
-            }
-            const criteriaResults = ClaimUtils.runCriteriaChecks(caseTransaction, casePolicySelections);
-            const fulfilledCount = criteriaResults.filter(result => result).length;
-            const uiState = ClaimUtils.determineUIState(fulfilledCount);
-
-            component.set("v.isCheckboxEnabled", uiState.isCheckboxEnabled);
-            component.set("v.buttonColor", uiState.buttonColor);
-        } catch (error) {
-            console.error('ClaimUtils.evaluateClaimCriteria: ', error.message);
-        }
-    };
-
-    // Modular criteria checking
-    ClaimUtils.runCriteriaChecks = function(caseTransaction, casePolicySelections) {
+    // Private functions (not attached to ClaimUtils)
+    function runCriteriaChecks(caseTransaction, casePolicySelections) {
         try {
             const criteria = [
                 // Criterion 1: Check if CallerType__c on Case is 'Customer'
@@ -43,7 +23,7 @@
                 () => casePolicySelections.length > 0,
                 () => casePolicySelections.every(policy => policy.Is_Valid__c),
                 // Placeholder for remaining 12 criteria
-                () => true, // Add actual logic
+                () => true,
                 () => true,
                 () => true,
                 () => true,
@@ -63,10 +43,9 @@
             console.error('ClaimUtils.runCriteriaChecks: ', error.message);
             return [];
         }
-    };
+    }
 
-    // Determine UI state based on fulfilled criteria count
-    ClaimUtils.determineUIState = function(fulfilledCount) {
+    function determineUIState(fulfilledCount) {
         try {
             if (typeof fulfilledCount !== 'number' || fulfilledCount < 0) {
                 throw new Error('Invalid fulfilledCount');
@@ -82,6 +61,26 @@
         } catch (error) {
             console.error('ClaimUtils.determineUIState: ', error.message);
             return { isCheckboxEnabled: false, buttonColor: 'red' };
+        }
+    }
+
+    // Public namespace
+    const ClaimUtils = {};
+
+    // Public method: Evaluate all 17 criteria
+    ClaimUtils.evaluateClaimCriteria = function(component, caseTransaction, casePolicySelections) {
+        try {
+            if (!component || !caseTransaction || !casePolicySelections) {
+                throw new Error('Invalid input parameters');
+            }
+            const criteriaResults = runCriteriaChecks(caseTransaction, casePolicySelections);
+            const fulfilledCount = criteriaResults.filter(result => result).length;
+            const uiState = determineUIState(fulfilledCount);
+
+            component.set("v.isCheckboxEnabled", uiState.isCheckboxEnabled);
+            component.set("v.buttonColor", uiState.buttonColor);
+        } catch (error) {
+            console.error('ClaimUtils.evaluateClaimCriteria: ', error.message);
         }
     };
 
