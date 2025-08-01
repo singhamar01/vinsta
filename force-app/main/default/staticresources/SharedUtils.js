@@ -1,11 +1,11 @@
 (function (global, factory) {
     // UMD pattern to support ES modules, CommonJS, and global access
-    if (typeof define === 'function' && define.amd) {
+    if (typeof define === 'function' && define.amd) {//Checks if the environment supports AMD (Asynchronous Module Definition)
         define(factory);
-    } else if (typeof exports === 'object') {
+    } else if (typeof exports === 'object') {//commonly used in Node.js Salesforce’s client-side JavaScript (in LWC and Aura) runs in a browser environment, not Node.js.
         module.exports = factory();
-    } else {
-        global.SharedUtils = factory();
+    } else { //Fallback for environments without AMD or CommonJS, such as plain browser scripts or global scope access.
+        global.SharedUtils = factory(); //Attaches the SharedUtils object to window.SharedUtils.
     }
 }(this, function () {
     // Private namespace to avoid global pollution
